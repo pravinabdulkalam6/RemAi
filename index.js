@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const cors = require('cors');
 const sharp = require('sharp');
+require('dotenv').config();
 const app = express();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyBu5QU-y_TTzPXXVtiW8UtpfEHA_eCf42c");
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' })); // to handle large image data
 const model1 = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
